@@ -1,12 +1,12 @@
 import React from 'react';
 
-const InputZakat = () => {
+const InputSodakoh = () => {
     return (
         <div>
             <form>
 
                 <div>
-                    <p>no team</p>
+                    ini input sodakoh
 
                     {/* family section */}
                         {/* nama */}
@@ -30,4 +30,4 @@ const InputZakat = () => {
     );
 }
 
-export default InputZakat;
+export default InputSodakoh;

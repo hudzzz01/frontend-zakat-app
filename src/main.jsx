@@ -10,6 +10,9 @@ import Layout from './components/pages/header-footer/Layout.jsx';
 import Dashboard from './components/pages/DashboardPage.jsx';
 import LoginPage from './components/pages/LoginPage.jsx';
 import InputPage from './components/pages/InputPage.jsx';
+import InputZakat from './components/context/input/InputZakat.jsx';
+import InputFidyah from './components/context/input/InputFidyah.jsx';
+import InputSodakoh from './components/context/input/InputSodakoh.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -21,8 +24,13 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<Layout />} >
             <Route index element={<Dashboard />} />
-            <Route path='login' element={<LoginPage/>} />
-            <Route path='input' element={<InputPage/>} />
+            <Route path='login' element={<LoginPage />} />
+            <Route path='input' element={<InputPage />} >
+              <Route index element={<InputZakat/>}/>
+              <Route path='zakat' element={<InputZakat/>}/>
+              <Route path='fidyah' element={<InputFidyah/>}/>
+              <Route path='sodakoh' element={<InputSodakoh/>}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
