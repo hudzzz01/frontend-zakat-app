@@ -8,6 +8,8 @@ import { AppProvider } from './components/context/AppProvider.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Layout from './components/pages/header-footer/Layout.jsx';
 import Dashboard from './components/pages/DashboardPage.jsx';
+import LoginPage from './components/pages/LoginPage.jsx';
+import InputPage from './components/pages/InputPage.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -19,7 +21,8 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<Layout />} >
             <Route index element={<Dashboard />} />
-            {/* <Route path='extract' element={<ExtractPage />} /> */}
+            <Route path='login' element={<LoginPage/>} />
+            <Route path='input' element={<InputPage/>} />
           </Route>
         </Routes>
       </BrowserRouter>
