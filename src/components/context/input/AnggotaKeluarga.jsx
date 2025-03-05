@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 
-const AnggotaKeluarga = ({anggotaKeluargaFormZakat,urutan}) => {
+const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, formData }) => {
 
-    const [anggotaKeluarga,setAnggotaKeluarga] = useState(anggotaKeluargaFormZakat);
+    const [anggotaKeluarga, setAnggotaKeluarga] = useState(anggotaKeluargaFormZakat);
 
     const [isBin, setIsBin] = useState(true)
 
-    const hanldeOnCheckBinBinti = (newIsBin)=> {
+    const hanldeOnCheckBinBinti = (newIsBin) => {
         setIsBin(newIsBin)
     }
-    const nomorUrut = urutan+1
+    const nomorUrut = urutan + 1
 
 
 
-    
+
+
+
 
 
     const bin = <div class="form-floating">
@@ -28,57 +30,133 @@ const AnggotaKeluarga = ({anggotaKeluargaFormZakat,urutan}) => {
 
     return (
         <div>
-            <h3>Keluarga ke {nomorUrut} </h3>
-             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="jabatan-keluarga" id="jabatan-keluarga" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">Saya</label>
+            <h3>Anggota Keluarga ke {nomorUrut} </h3>
+            <div class="form-check form-check-inline">
+                {urutan == 0 ?
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "saya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" checked />
+                    :
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "saya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                }
+                <label class="form-check-label" for="inlineRadio1">Saya</label>
             </div>
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="jabatan-keluarga" id="jabatan-keluarga" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">Istri Saya</label>
+                {urutan == 0 ?
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "istri") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" disabled />
+
+
+                    :
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "istri") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+
+                }
+                <label class="form-check-label" for="inlineRadio1">Istri Saya</label>
             </div>
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="jabatan-keluarga" id="jabatan-keluarga" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">Suami saya</label>
+                {urutan == 0 ?
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "suami") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" disabled />
+
+
+                    :
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "suami") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+
+                }
+                <label class="form-check-label" for="inlineRadio1">Suami saya</label>
             </div>
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="jabatan-keluarga" id="jabatan-keluarga" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">Anak Saya</label>
+                {urutan == 0 ?
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "anak") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" disabled/>
+
+
+                    :
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "anak") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+
+                }
+                <label class="form-check-label" for="inlineRadio1">Anak Saya</label>
             </div>
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="jabatan-keluarga" id="jabatan-keluarga" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">Orang tua saya</label>
+                {urutan == 0 ?
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "orang_tua") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" disabled/>
+
+
+                    :
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "orang_tua") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+
+                }
+                <label class="form-check-label" for="inlineRadio1">Orang tua saya</label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="jabatan-keluarga" id="jabatan-keluarga" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">Saudara saya</label>
+                {urutan == 0 ?
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "saudara") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" disabled />
+
+                    :
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "saudara") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+
+                }
+                <label class="form-check-label" for="inlineRadio1">Saudara saya</label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="jabatan-keluarga" id="jabatan-keluarga" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">lainya</label>
+                {urutan == 0 ?
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "lainya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" disabled/>
+
+
+                    :
+
+                    <input onChange={() => { hanldeOnCheckBinBinti(true); handleOnchenge(`jabatan-keluarga-${urutan}`, "lainya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+
+                }
+                <label class="form-check-label" for="inlineRadio1">lainya</label>
             </div>
 
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                <label for="floatingTextarea">Nama</label>
+                {urutan == 0 ?
+
+                    <textarea class="form-control" name={`nama-${urutan}`} onChange={(e) => handleOnchenge(`nama-${urutan}`, e.target.value)} placeholder="Leave a comment here" id="floatingTextarea" disabled value={formData.nama_lengkap}   ></textarea>
+                    :
+                    <textarea class="form-control" name={`nama-${urutan}`} onChange={(e) => handleOnchenge(`nama-${urutan}`, e.target.value)} placeholder="Leave a comment here" id="floatingTextarea"   ></textarea>
+                }
+
+                <label for="floatingTextarea" required >Nama</label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                    <label class="form-check-label" for="inlineRadio1">Bin</label>
+                <input onChange={() => hanldeOnCheckBinBinti(true)} class="form-check-input" on type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                <label class="form-check-label" for="inlineRadio1">Bin</label>
             </div>
             <div class="form-check form-check-inline">
-                <input onChange={()=>hanldeOnCheckBinBinti(false)} class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-                    <label class="form-check-label" for="inlineRadio2">Binti</label>
+                <input onChange={() => hanldeOnCheckBinBinti(false)} class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                <label class="form-check-label" for="inlineRadio2">Binti</label>
             </div>
+
 
             {
                 isBin ? bin : binti
             }
 
-           
+            <div class="form-floating">
+                <textarea disabled class="form-control" value={`${formData.alamat} , kelurahan : ${formData.kelurahan}, ${formData.kecamatan}, kota/kabupaten : ${formData.kota_atau_kabupaten} `} name={`alamat-${urutan}`} onChange={(e) => handleOnchenge(`nama-${urutan}`, e.target.value)} placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea" required >Alamat</label>
+            </div>
+
+            <div class="form-floating">
+                <textarea disabled class="form-control" value={formData.no_hp_wa} name={`no_telpon-${urutan}`} onChange={(e) => handleOnchenge(`nama-${urutan}`, e.target.value)} placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea" required >No telpon</label>
+            </div>
+
+
+
 
 
 

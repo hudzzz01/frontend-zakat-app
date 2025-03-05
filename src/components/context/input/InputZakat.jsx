@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import AnggotaKeluarga from './AnggotaKeluarga';
 
 const InputZakat = () => {
+    
+    const [urutanAnggota,setUrutanAnggota] = useState(1);
+    
 
     const [formData, setFormData] = useState({
         "uuid_masjid": "56734523",
@@ -21,10 +24,12 @@ const InputZakat = () => {
         "malamId": "",
         "anggota_keluarga": [
             {
-                "nama": "",
-                "bin": "",
-                "binti": "",
-                "jabatan_di_keluarga": ""
+                "nama-0": "",
+                "bin-0": "",
+                "binti-0": "",
+                "jabatan_di_keluarga-0": "",
+                "alamat-0" : "",
+                "no_telepon" : "",
             },
             
         ],
@@ -34,43 +39,94 @@ const InputZakat = () => {
     })
 
     const handleOnChange = (key, e) => {
+
+      
+        
         setFormData(prevFormData => ({
             ...prevFormData,
             [key]: e.target.value
         }));
 
-        console.log(key);
+        // console.log(key);
         
     };
+
+
+    console.log(formData);
+    
+
+
+    
+
+    const handleOnChangeFamilyMember = (key, val) => {
+
+        // console.log(key,val);
+   
+
+
+        const index=key.split("-")[key.split("-").length -1]   
+
+        let newFamilyMember = [...formData.anggota_keluarga]; 
+        newFamilyMember[index] = { 
+            ...newFamilyMember[index],  // Salin data sebelumnya
+            [key]: val      // Update nilai yang diubah
+        };
+
+        const newFormData = {
+            ...formData,
+            anggota_keluarga : newFamilyMember
+        }
+
+        // console.log(newFormData);
+        
+      
+
+        setFormData(newFormData)
+        
+        
+    
+        
+    };
+
+    
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        console.log(formData);
+        
+    }
     
 
     const handleAddFamilyMember = ()=> {
-        const temp =  {
-            "nama": "",
-            "bin": "",
-            "binti": "",
-            "jabatan_di_keluarga": ""
-        }
+        const temp =  {}
+
+        temp[`nama-${urutanAnggota}`] = "";
+        temp[`bin-${urutanAnggota}`] = "";
+        temp[`binti-${urutanAnggota}`] = "";
+        temp[`jabatan_di_keluarga=${urutanAnggota}`] = "";
 
 
         const newFamilyMember = [...formData.anggota_keluarga, temp]
+        
+        
 
         setFormData({...formData, anggota_keluarga : newFamilyMember})
+        setUrutanAnggota(urutanAnggota + 1)
 
-        console.log(formData);
+        // console.log(formData);
         
     }
 
 
-    return (
+    return (    
         <div>
-            <form>
+            <form onSubmit={(e)=>handleSubmit(e)}>
 
                 <div>
                     ini input zakat
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="inputGroup-sizing-default" >Nama Lengkap</span>
-                        <input onChange={(e)=> handleOnChange(`nama_lengkap`,e)} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                        <input onChange={(e)=> {handleOnChange(`nama_lengkap`,e); handleOnChangeFamilyMember(`nama-0`,e.target.value)}} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="inputGroup-sizing-default">Tempat Tanggal Lahir</span>
@@ -84,41 +140,52 @@ const InputZakat = () => {
                         <label for="floatingTextarea">Alamat</label>
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea  onChange={(e)=> handleOnChange(`kelurahan`,e)} class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                         <label for="floatingTextarea">kelurahan</label>
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea  onChange={(e)=> handleOnChange(`kecamatan`,e)} class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                         <label for="floatingTextarea">kecamatan</label>
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea  onChange={(e)=> handleOnChange(`kota_atau_kabupaten`,e)} class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                         <label for="floatingTextarea">kota atau kabupaten</label>
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="inputGroup-sizing-default">No Whatsapp</span>
-                        <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                        <input  onChange={(e)=> handleOnChange(`no_hp_wa`,e)} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="inputGroup-sizing-default">No Hp Alternatif</span>
-                        <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                        <input  onChange={(e)=> handleOnChange(`no_hp_alternatif`,e)} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
-                        <input type="text" className="form-control" placeholder='Ex. example@example.com' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                        <input  onChange={(e)=> handleOnChange(`email`,e)} type="email" className="form-control" placeholder='Ex. example@example.com' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                     </div>
                     <h3>Anggota keluarga : </h3>
 
                     {
+                  
+                        
                         formData.anggota_keluarga.map((anggota, index) => (
-                            <AnggotaKeluarga anggotaKeluargaFormZakat={anggota} key={index} urutan={index} />
+                            <AnggotaKeluarga 
+                            anggotaKeluargaFormZakat={anggota} 
+                            key={index} 
+                            urutan={index} 
+                            handleOnchenge={handleOnChangeFamilyMember}
+                            formData={formData}
+                            />
                         ))
                         
                     }
 
                     <div>
-                        <button type='button' onClick={handleAddFamilyMember} className='btn btn-success'> Tambah Anggota keluarga </button>
+                        <button type='button' onClick={()=>handleAddFamilyMember()} className='btn btn-success'> Tambah Anggota keluarga </button>
                     </div>
+
+
+                    <button>Submit</button>
                     
 
 
