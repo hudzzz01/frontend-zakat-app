@@ -20,8 +20,8 @@ const InputZakat = () => {
         "no_hp_wa": "",
         "no_hp_alternatif": "",
         "email": "",
-        "tim": "",
-        "malamId": "",
+        "tim": "1",
+        "malamId": "1",
         "anggota_keluarga": [
             {
                 "nama-0": "",
@@ -33,7 +33,7 @@ const InputZakat = () => {
             },
             
         ],
-        "zakat": "",
+        "zakat": "45000",
         "sodakoh": "",
         "fidyah": ""
     })
@@ -52,7 +52,7 @@ const InputZakat = () => {
     };
 
 
-    console.log(formData);
+    // console.log(formData);
     
 
 
@@ -60,7 +60,7 @@ const InputZakat = () => {
 
     const handleOnChangeFamilyMember = (key, val) => {
 
-        // console.log(key,val);
+        console.log(key,val);
    
 
 
@@ -126,7 +126,7 @@ const InputZakat = () => {
                     ini input zakat
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="inputGroup-sizing-default" >Nama Lengkap</span>
-                        <input onChange={(e)=> {handleOnChange(`nama_lengkap`,e); handleOnChangeFamilyMember(`nama-0`,e.target.value)}} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                        <input onChange={(e)=> {handleOnChange(`nama_lengkap`,e)}} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="inputGroup-sizing-default">Tempat Tanggal Lahir</span>
@@ -169,12 +169,14 @@ const InputZakat = () => {
                   
                         
                         formData.anggota_keluarga.map((anggota, index) => (
+                           
                             <AnggotaKeluarga 
                             anggotaKeluargaFormZakat={anggota} 
                             key={index} 
                             urutan={index} 
                             handleOnchenge={handleOnChangeFamilyMember}
                             formData={formData}
+                            setFormData={setFormData}
                             />
                         ))
                         
@@ -182,6 +184,20 @@ const InputZakat = () => {
 
                     <div>
                         <button type='button' onClick={()=>handleAddFamilyMember()} className='btn btn-success'> Tambah Anggota keluarga </button>
+                    </div>
+
+                    {/* section zakat dan sodakoh */}
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" id="inputGroup-sizing-default" >Jumlah Zakat</span>
+                        <input onChange={(e)=> {handleOnChange(`zakat`,e)}} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={formData.zakat} />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" id="inputGroup-sizing-default" >Jumlah Sodakoh</span>
+                        <input onChange={(e)=> {handleOnChange(`sodakoh`,e)}} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={formData.sodakoh} />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" id="inputGroup-sizing-default" >Jumlah fidyah</span>
+                        <input onChange={(e)=> {handleOnChange(`fidyah`,e)}} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={formData.fidyah} />
                     </div>
 
 
