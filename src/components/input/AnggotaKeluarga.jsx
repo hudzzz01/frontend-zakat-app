@@ -14,7 +14,7 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
     const handleChangeBinValue = (e, urutan) => {
 
         // console.log(formData.anggota_keluarga);
-        
+
 
         let newFamilyMember = [...formData.anggota_keluarga];
         newFamilyMember[urutan] = {
@@ -42,7 +42,7 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
             [`binti-${urutan}`]: e.target.value
         };
 
-        
+
         const newFormData = {
             ...formData,
             anggota_keluarga: newFamilyMember
@@ -63,7 +63,7 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
         } else {
 
 
-
+            
             setIsBin(false)
         }
 
@@ -71,6 +71,28 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
 
 
     const nomorUrut = urutan + 1
+
+
+    const handleClickdelete = (urutan)=>{
+
+        console.log(urutan);
+        
+
+        let newFamilyMember = [...formData.anggota_keluarga];
+        newFamilyMember.splice(urutan,1)
+
+
+
+        const newFormData = {
+            ...formData,
+            anggota_keluarga: newFamilyMember
+        }
+
+        console.log(newFormData);
+        
+
+        setFormData(newFormData)
+    }
 
 
 
@@ -123,18 +145,18 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
                     <div>
 
                         <div class="form-check">
-                            <input required class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onChange={() => { isChecked == true ? setIsChecked(false) : setIsChecked(true) }} />
+                            <input  class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onChange={() => { isChecked == true ? setIsChecked(false) : setIsChecked(true) }} />
                             <label class="form-check-label" for="flexCheckChecked">
                                 Samakan seperti form
                             </label>
                         </div>
-                        <input required onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
+                        <input  onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
 
                     </div>
                     :
 
-                    <input  onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
                 }
                 <label class="form-check-label" for="inlineRadio1">Saya</label>
             </div>
@@ -306,7 +328,7 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
 
 
 
-
+                <button className='btn btn-danger' type='button' onClick={()=>handleClickdelete(urutan)}>Delete</button>
 
 
         </div>
