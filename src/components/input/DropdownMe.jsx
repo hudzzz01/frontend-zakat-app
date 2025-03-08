@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
-const DropdownMe = ({keyName}) => {
+const DropdownMe = ({keyName,setKeyName}) => {
     const values = [];
 
     const [value,setValue] = useState(1);
@@ -10,6 +10,9 @@ const DropdownMe = ({keyName}) => {
     }
 
     const handleClick = (value)=>{
+ 
+        
+        setKeyName(value)
         setValue(value)
 
         

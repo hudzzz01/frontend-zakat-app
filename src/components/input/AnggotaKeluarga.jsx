@@ -87,7 +87,7 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
         let newFamilyMember = [...formData.anggota_keluarga];
         newFamilyMember[0] = {
             ...newFamilyMember[0],  // Salin data sebelumnya
-            ["jabatab-keluarga-0"]: "kepala keluarga",      // Update nilai yang diubah
+            ["jabatan_di_keluarga-0"]: "kepala keluarga",      // Update nilai yang diubah
             [`nama-0`]: formData.nama_lengkap,
             ["alamat-0"]: formData.alamat
         };
@@ -123,30 +123,30 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
                     <div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onChange={() => { isChecked == true ? setIsChecked(false) : setIsChecked(true) }} />
+                            <input required class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onChange={() => { isChecked == true ? setIsChecked(false) : setIsChecked(true) }} />
                             <label class="form-check-label" for="flexCheckChecked">
                                 Samakan seperti form
                             </label>
                         </div>
-                        <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                        <input required onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
 
                     </div>
                     :
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input  onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "kepala-keluarga") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
                 }
                 <label class="form-check-label" for="inlineRadio1">Saya</label>
             </div>
             <div class="form-check form-check-inline">
                 {urutan == 0 ?
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "istri") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "istri") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
 
                     :
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "istri") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "istri") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
                 }
                 <label class="form-check-label" for="inlineRadio1">Istri Saya</label>
@@ -154,12 +154,12 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
             <div class="form-check form-check-inline">
                 {urutan == 0 ?
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "suami") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "suami") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
 
                     :
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "suami") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "suami") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
                 }
                 <label class="form-check-label" for="inlineRadio1">Suami saya</label>
@@ -167,12 +167,12 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
             <div class="form-check form-check-inline">
                 {urutan == 0 ?
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "anak") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "anak") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
 
                     :
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "anak") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "anak") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
                 }
                 <label class="form-check-label" for="inlineRadio1">Anak Saya</label>
@@ -180,12 +180,12 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
             <div class="form-check form-check-inline">
                 {urutan == 0 ?
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "orang_tua") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "orang_tua") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
 
                     :
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "orang_tua") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "orang_tua") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
                 }
                 <label class="form-check-label" for="inlineRadio1">Orang tua saya</label>
@@ -194,11 +194,11 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
             <div class="form-check form-check-inline">
                 {urutan == 0 ?
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "saudara") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "saudara") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
                     :
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "saudara") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "saudara") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
                 }
                 <label class="form-check-label" for="inlineRadio1">Saudara saya</label>
@@ -207,12 +207,12 @@ const AnggotaKeluarga = ({ anggotaKeluargaFormZakat, urutan, handleOnchenge, for
             <div class="form-check form-check-inline">
                 {urutan == 0 ?
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "lainya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "lainya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
 
                     :
 
-                    <input onChange={() => { handleOnchenge(`jabatan-keluarga-${urutan}`, "lainya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan-keluarga" value="option1" />
+                    <input onChange={() => { handleOnchenge(`jabatan_di_keluarga-${urutan}`, "lainya") }} class="form-check-input" on type="radio" name={`jabatan_keluarga-${urutan}`} id="jabatan_di_keluarga" value="option1" />
 
                 }
                 <label class="form-check-label" for="inlineRadio1">lainya</label>

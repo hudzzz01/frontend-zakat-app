@@ -1,12 +1,21 @@
-import React from 'react';
-import Nav from '../context/input/Nav';
-import DropdownMe from '../context/input/DropdownMe';
+import React, { useContext } from 'react';
+import Nav from '../input/Nav';
+import DropdownMe from '../input/DropdownMe';
 import { Outlet } from 'react-router';
+import { AppContext } from '../context/AppProvider';
+import ModalConfrimation from '../ModalConfrimation';
 
 
 
 
 const InputPage = () => {
+    const { team, setTeam, malam,setMalam } = useContext(AppContext)
+
+    const convertToStringSetTeam = (newTeam) => {
+
+        setTeam(String(newTeam))
+    }
+
     return (
         <div className=''>
             <div className='row'>
@@ -16,12 +25,12 @@ const InputPage = () => {
                 <div className='col-lg-10'>
                     <div className=''>
                         <div className='d-flex gap-2'>
-                            <DropdownMe keyName="malam" />
-                            <DropdownMe keyName="team" />
+                            <DropdownMe keyName="malam" setKeyName={setMalam} />
+                            <DropdownMe keyName="team" setKeyName={convertToStringSetTeam} />
                         </div>
 
                         <div>
-                            <Outlet />
+                            <Outlet />  
                         </div>
 
                     </div>
